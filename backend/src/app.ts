@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { db } from '../../src/config/db';
-import productRoutes from '../../src/routes/productRoutes';
+import db from './config/db';
+import productRoutes from './routes/productRoutes';
 
 dotenv.config();
 
@@ -14,13 +14,15 @@ app.use(cors());
 app.use(express.json());
 
 // Database connection
-db.connect((err) => {
-  if (err) {
+// Database connection check
+db.getConnection()
+  .then((connection) => {
+    console.log('Connected to MySQL database');
+    connection.release();
+  })
+  .catch((err) => {
     console.error('Error connecting to the database:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
-});
+  });
 
 // Routes
 app.use('/api/products', productRoutes);
