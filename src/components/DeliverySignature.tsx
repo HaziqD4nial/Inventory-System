@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DeliveryItem } from '../types/delivery';
+import { DeliveryItem } from '../../backend/src/types/delivery';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { ScrollArea } from './ui/scroll-area';

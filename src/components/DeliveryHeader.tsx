@@ -1,7 +1,7 @@
 import { ArrowLeft, Info, Receipt, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Category } from '../types/delivery';
+import { Category } from '../../backend/src/types/delivery';
 
 interface DeliveryHeaderProps {
   selectedCategory: string;

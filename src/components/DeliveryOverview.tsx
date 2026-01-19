@@ -1,9 +1,9 @@
-import { DeliveryOrder } from '../types/delivery';
+import { DeliveryOrder } from '../../backend/src/types/delivery';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Package, Truck, Calendar, Building, ArrowLeft, User, Hash, Clock, AlertTriangle, FileText, Receipt } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 interface DeliveryOverviewProps {
   orders: DeliveryOrder[];

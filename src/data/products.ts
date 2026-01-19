@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '../../backend/src/types';
 
 export const products: Product[] = [
   // Main Dishes

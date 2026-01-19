@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DeliveryItem } from '../types/delivery';
+import { DeliveryItem } from '../../backend/src/types/delivery';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import { Button } from './ui/button';
 import { Input } from './ui/input';

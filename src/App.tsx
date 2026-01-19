@@ -9,8 +9,8 @@ import { DeliverySignature } from './components/DeliverySignature';
 import { CategoryDetails } from './components/CategoryDetails';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { deliveryItems, deliveryCategories } from './data/deliveryData';
-import { DeliveryItem, DeliveryOrder } from './types/delivery';
-import { toast } from 'sonner@2.0.3';
+import { DeliveryItem, DeliveryOrder } from '../backend/src/types/delivery';
+import { toast } from 'sonner';
 
 // Mock delivery orders for the overview
 const mockDeliveryOrders: DeliveryOrder[] = [
@@ -130,6 +130,16 @@ export default function App() {
   const [items, setItems] = useState<DeliveryItem[]>(deliveryItems);
   const [editingItem, setEditingItem] = useState<DeliveryItem | null>(null);
   const [hasChanges, setHasChanges] = useState(false);
+
+  // Get current order details
+  const currentOrder = selectedOrder ? mockDeliveryOrders.find(o => o.id === selectedOrder) : undefined;
+  const currentOrderInfo = currentOrder ? {
+    id: currentOrder.id,
+    supplier: currentOrder.supplier,
+    invoiceNumber: currentOrder.invoiceNumber,
+    deliveryOrderNumber: currentOrder.deliveryOrderNumber,
+    orderDate: currentOrder.orderDate
+  } : undefined;
 
   // Filter items based on selected category
   const filteredItems = items.filter(item => item.category === selectedCategory);
@@ -266,7 +276,7 @@ export default function App() {
           onBack={() => setCurrentView('details')}
           onViewDetails={handleViewOrderDetails}
           onSign={handleSignComplete}
-          currentOrder={currentOrderInfo}
+          currentOrder={currentOrder}
         />
       </ErrorBoundary>
     );
@@ -283,16 +293,6 @@ export default function App() {
       </ErrorBoundary>
     );
   }
-
-  // Get current order details
-  const currentOrder = selectedOrder ? mockDeliveryOrders.find(o => o.id === selectedOrder) : undefined;
-  const currentOrderInfo = currentOrder ? {
-    id: currentOrder.id,
-    supplier: currentOrder.supplier,
-    invoiceNumber: currentOrder.invoiceNumber,
-    deliveryOrderNumber: currentOrder.deliveryOrderNumber,
-    orderDate: currentOrder.orderDate
-  } : undefined;
 
   return (
     <ErrorBoundary>

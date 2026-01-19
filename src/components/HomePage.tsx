@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
+
+// Create motion components with proper typing
+const MotionHeader = motion.header;
+const MotionDiv = motion.div;
+const MotionSpan = motion.span;
+
 import { 
   Truck, 
   Package, 
@@ -18,7 +24,6 @@ import {
   User,
   Search
 } from 'lucide-react';
-import exampleImage from 'figma:asset/6cce492b4603e3e00874b8afe5ffc1b99c9fa596.png';
 
 interface HomePageProps {
   onNavigateToDelivery: () => void;
@@ -112,12 +117,12 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                 <Menu className="h-6 w-6" />
               </Button>
               <div className="flex items-center gap-3">
-                <motion.div
+                <motion.span
                   whileHover={{ scale: 1.05 }}
-                  className="text-white text-xl font-medium"
+                  className="text-white text-xl font-medium inline-block"
                 >
                   🦓 ZEBRA
-                </motion.div>
+                </motion.span>
                 <div className="hidden md:block text-white/80 text-sm">
                   Warehouse Management System
                 </div>
@@ -235,13 +240,13 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                           </div>
                           
                           {module.notification > 0 && (
-                            <motion.div
+                            <motion.span
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
                               className="flex items-center justify-center h-8 w-8 bg-red-500 text-white rounded-full text-sm font-bold shadow-lg"
                             >
                               {module.notification}
-                            </motion.div>
+                            </motion.span>
                           )}
                         </div>
                         
@@ -285,11 +290,8 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
               <CardContent className="p-0">
                 <div className="space-y-0">
                   {recentActivity.map((activity, index) => (
-                    <motion.div
+                    <div
                       key={activity.id}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
                       className="p-4 border-b last:border-b-0 hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex items-start gap-3">
@@ -317,7 +319,7 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                           </p>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </CardContent>

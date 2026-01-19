@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '../../backend/src/types';
 import { ProductCard } from './ProductCard';
 import { ScrollArea } from './ui/scroll-area';
 

@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '../../backend/src/types';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';

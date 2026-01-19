@@ -1,4 +1,4 @@
-import { DeliveryItem, Category } from '../types/delivery';
+import { DeliveryItem, Category } from '../../backend/src/types/delivery';
 
 export const deliveryCategories: Category[] = [
   { id: 'frozen-products', name: 'FROZEN PRODUCTS', itemCount: 5 },

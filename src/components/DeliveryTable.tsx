@@ -1,4 +1,4 @@
-import { DeliveryItem } from '../types/delivery';
+import { DeliveryItem } from '../../backend/src/types/delivery';
 import { DeliveryItemRow } from './DeliveryItemRow';
 import { ScrollArea } from './ui/scroll-area';
 

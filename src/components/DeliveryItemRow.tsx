@@ -1,4 +1,4 @@
-import { DeliveryItem } from '../types/delivery';
+import { DeliveryItem } from '../../backend/src/types/delivery';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';

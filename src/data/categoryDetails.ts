@@ -1,5 +1,3 @@
-import categoryImage from 'figma:asset/0e8740c06ab43773efe28c56f3e8c585accb6854.png';
-
 export interface CategoryDetail {
   id: string;
   name: string;
@@ -27,7 +25,7 @@ export const categoryDetails: CategoryDetail[] = [
     name: 'Frozen Products',
     description: 'Temperature-sensitive frozen food items requiring immediate cold storage and careful handling',
     icon: '❄️',
-    image: categoryImage,
+    image: 'categoryImage',
     color: 'from-blue-500 to-cyan-600',
     bgGradient: 'from-blue-50 to-cyan-100',
     requirements: {

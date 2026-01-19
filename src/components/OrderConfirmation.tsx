@@ -1,4 +1,4 @@
-import { Order } from '../types';
+import { Order } from '../../backend/src/types';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { Button } from './ui/button';
 import { CheckCircle, Clock, Receipt } from 'lucide-react';

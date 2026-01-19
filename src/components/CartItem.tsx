@@ -1,4 +1,4 @@
-import { CartItem as CartItemType } from '../types';
+import { CartItem as CartItemType } from '../../backend/src/types';
 import { Button } from './ui/button';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
