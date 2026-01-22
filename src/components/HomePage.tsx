@@ -9,12 +9,12 @@ const MotionHeader = motion.header;
 const MotionDiv = motion.div;
 const MotionSpan = motion.span;
 
-import { 
-  Truck, 
-  Package, 
-  RefreshCw, 
-  BarChart3, 
-  Clock, 
+import {
+  Truck,
+  Package,
+  RefreshCw,
+  BarChart3,
+  Clock,
   CheckCircle,
   AlertTriangle,
   TrendingUp,
@@ -105,7 +105,7 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 shadow-xl"
@@ -121,10 +121,9 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                   whileHover={{ scale: 1.05 }}
                   className="text-white text-xl font-medium inline-block"
                 >
-                  🦓 ZEBRA
                 </motion.span>
                 <div className="hidden md:block text-white/80 text-sm">
-                  Warehouse Management System
+                  Inventory Management System
                 </div>
               </div>
             </div>
@@ -227,18 +226,18 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Card 
+                    <Card
                       className={`relative overflow-hidden cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br ${module.bgPattern}`}
                       onClick={module.onClick}
                     >
                       <div className={`absolute inset-0 bg-gradient-to-r ${module.color} opacity-5`} />
-                      
+
                       <CardContent className="relative p-6">
                         <div className="flex items-start justify-between mb-4">
                           <div className={`p-3 rounded-xl bg-gradient-to-r ${module.color} text-white shadow-lg`}>
                             <module.icon className="h-8 w-8" />
                           </div>
-                          
+
                           {module.notification > 0 && (
                             <motion.span
                               initial={{ scale: 0 }}
@@ -249,14 +248,14 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                             </motion.span>
                           )}
                         </div>
-                        
+
                         <h3 className="text-xl font-semibold text-gray-800 mb-2">
                           {module.title}
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
                           {module.description}
                         </p>
-                        
+
                         <div className="mt-4 flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             {module.status === 'active' && <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />}
@@ -264,7 +263,7 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                             {module.status === 'upcoming' && <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />}
                             <span className="text-xs text-gray-500 capitalize">{module.status}</span>
                           </div>
-                          
+
                           <Button size="sm" variant="ghost" className="text-gray-600 hover:text-gray-800">
                             View Details →
                           </Button>
@@ -285,7 +284,7 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
             className="space-y-6"
           >
             <h2 className="text-2xl font-semibold text-gray-800">Recent Activity</h2>
-            
+
             <Card className="border-0 shadow-lg">
               <CardContent className="p-0">
                 <div className="space-y-0">
@@ -295,18 +294,17 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
                       className="p-4 border-b last:border-b-0 hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex items-start gap-3">
-                        <div className={`p-2 rounded-full ${
-                          activity.status === 'success' ? 'bg-green-100 text-green-600' :
+                        <div className={`p-2 rounded-full ${activity.status === 'success' ? 'bg-green-100 text-green-600' :
                           activity.status === 'pending' ? 'bg-blue-100 text-blue-600' :
-                          activity.status === 'warning' ? 'bg-yellow-100 text-yellow-600' :
-                          'bg-gray-100 text-gray-600'
-                        }`}>
+                            activity.status === 'warning' ? 'bg-yellow-100 text-yellow-600' :
+                              'bg-gray-100 text-gray-600'
+                          }`}>
                           {activity.status === 'success' && <CheckCircle className="h-4 w-4" />}
                           {activity.status === 'pending' && <Clock className="h-4 w-4" />}
                           {activity.status === 'warning' && <AlertTriangle className="h-4 w-4" />}
                           {activity.status === 'info' && <TrendingUp className="h-4 w-4" />}
                         </div>
-                        
+
                         <div className="flex-1 min-w-0">
                           <p className="font-medium text-gray-800 text-sm">
                             {activity.action}
@@ -330,16 +328,16 @@ export function HomePage({ onNavigateToDelivery, onViewCategoryDetails }: HomePa
               <CardContent className="p-6">
                 <h3 className="font-semibold mb-4">Quick Actions</h3>
                 <div className="space-y-3">
-                  <Button 
-                    variant="secondary" 
+                  <Button
+                    variant="secondary"
                     className="w-full justify-start bg-white/10 hover:bg-white/20 text-white border-0"
                     onClick={onNavigateToDelivery}
                   >
                     <Search className="h-4 w-4 mr-2" />
                     Search Deliveries
                   </Button>
-                  <Button 
-                    variant="secondary" 
+                  <Button
+                    variant="secondary"
                     className="w-full justify-start bg-white/10 hover:bg-white/20 text-white border-0"
                     onClick={onViewCategoryDetails}
                   >

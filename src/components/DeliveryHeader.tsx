@@ -18,10 +18,10 @@ interface DeliveryHeaderProps {
   };
 }
 
-export function DeliveryHeader({ 
-  selectedCategory, 
-  categories, 
-  onCategoryChange, 
+export function DeliveryHeader({
+  selectedCategory,
+  categories,
+  onCategoryChange,
   onBack,
   onViewCategoryDetails,
   currentOrder
@@ -39,7 +39,7 @@ export function DeliveryHeader({
         >
           <ArrowLeft className="h-5 w-5" />
         </Button>
-        
+
         <div>
           <h1 className="text-xl font-medium">
             {currentOrder ? `Delivery #${currentOrder.id}` : 'Category Details'}
@@ -50,12 +50,12 @@ export function DeliveryHeader({
             </p>
           )}
         </div>
-        
+
         <div className="ml-auto flex items-center">
-          <span className="text-sm mr-2">🦓 ZEBRA</span>
+          <span className="text-sm mr-2"></span>
         </div>
       </div>
-      
+
       <div className="mt-4 max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

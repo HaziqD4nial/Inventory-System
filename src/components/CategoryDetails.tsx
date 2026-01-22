@@ -6,12 +6,12 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { ScrollArea } from './ui/scroll-area';
-import { 
-  ArrowLeft, 
-  Thermometer, 
-  Droplets, 
-  AlertTriangle, 
-  Clock, 
+import {
+  ArrowLeft,
+  Thermometer,
+  Droplets,
+  AlertTriangle,
+  Clock,
   Package,
   CheckCircle,
   Info,
@@ -63,7 +63,7 @@ export function CategoryDetails({ categoryId, onBack, onSelectCategory }: Catego
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <motion.div 
+      <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6"
@@ -81,9 +81,8 @@ export function CategoryDetails({ categoryId, onBack, onSelectCategory }: Catego
               </Button>
               <h1 className="text-2xl font-bold">Category Management</h1>
             </div>
-            <div className="text-white/80">🦓 ZEBRA</div>
           </div>
-          
+
           <div className="flex items-center gap-3">
             <div className={`p-3 rounded-xl bg-gradient-to-r ${currentCategory.color} shadow-lg`}>
               <span className="text-2xl">{currentCategory.icon}</span>
@@ -120,11 +119,10 @@ export function CategoryDetails({ categoryId, onBack, onSelectCategory }: Catego
                       >
                         <Button
                           variant={selectedCategory === category.id ? "default" : "ghost"}
-                          className={`w-full justify-start p-3 h-auto ${
-                            selectedCategory === category.id 
-                              ? `bg-gradient-to-r ${category.color} text-white` 
-                              : ''
-                          }`}
+                          className={`w-full justify-start p-3 h-auto ${selectedCategory === category.id
+                            ? `bg-gradient-to-r ${category.color} text-white`
+                            : ''
+                            }`}
                           onClick={() => {
                             setSelectedCategory(category.id);
                             onSelectCategory(category.id);
@@ -249,7 +247,7 @@ export function CategoryDetails({ categoryId, onBack, onSelectCategory }: Catego
                               </CardContent>
                             </Card>
                           )}
-                          
+
                           {currentCategory.requirements.humidity && (
                             <Card className="bg-cyan-50 border-cyan-200">
                               <CardContent className="p-4">

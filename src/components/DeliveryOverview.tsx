@@ -9,9 +9,10 @@ interface DeliveryOverviewProps {
   orders: DeliveryOrder[];
   onSelectOrder: (orderId: string) => void;
   onBackToHome?: () => void;
+  onAddDelivery?: () => void;
 }
 
-export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: DeliveryOverviewProps) {
+export function DeliveryOverview({ orders, onSelectOrder, onBackToHome, onAddDelivery }: DeliveryOverviewProps) {
   const getStatusColor = (status: DeliveryOrder['status']) => {
     switch (status) {
       case 'completed':
@@ -52,8 +53,8 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-6">
-          <div className="flex items-center gap-4 mb-4">
+        <div className="mb-6 flex items-center justify-between">
+          <div className="flex items-center gap-4">
             {onBackToHome && (
               <Button
                 variant="ghost"
@@ -68,6 +69,12 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
               <p className="text-muted-foreground">Manage incoming deliveries and verify items</p>
             </div>
           </div>
+          {onAddDelivery && (
+            <Button onClick={onAddDelivery} className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2">
+              <Truck className="h-4 w-4" />
+              Add Delivery
+            </Button>
+          )}
         </div>
 
         <div className="grid gap-6">
@@ -84,8 +91,8 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                     <div className="flex items-center gap-3">
                       {order.supplierLogo && (
                         <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-                          <img 
-                            src={order.supplierLogo} 
+                          <img
+                            src={order.supplierLogo}
                             alt={`${order.supplier} logo`}
                             className="w-full h-full object-cover"
                             onError={(e) => {
@@ -105,7 +112,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-2">
                       {order.priority && (
                         <Badge className={`${getPriorityColor(order.priority)} flex items-center gap-1`}>
@@ -119,7 +126,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                     </div>
                   </div>
                 </CardHeader>
-                
+
                 <CardContent>
                   {/* Document Information Row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
@@ -130,7 +137,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <p className="text-sm font-medium text-blue-800">{order.invoiceNumber}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <FileText className="h-4 w-4 text-blue-600" />
                       <div>
@@ -149,7 +156,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <p className="font-medium text-sm">{order.supplier}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <Calendar className="h-4 w-4 text-muted-foreground" />
                       <div>
@@ -158,7 +165,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <p className="text-xs text-muted-foreground">Ordered {Math.ceil((Date.now() - order.orderDate.getTime()) / (1000 * 60 * 60 * 24))} days ago</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <Truck className="h-4 w-4 text-muted-foreground" />
                       <div>
@@ -167,7 +174,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <p className="text-xs text-muted-foreground">{order.deliveryDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <Package className="h-4 w-4 text-muted-foreground" />
                       <div>
@@ -175,8 +182,8 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <p className="font-medium text-sm">{order.totalItems}</p>
                         <div className="flex items-center gap-1 mt-1">
                           <div className="flex-1 bg-gray-200 rounded-full h-1.5">
-                            <div 
-                              className="bg-blue-600 h-1.5 rounded-full transition-all duration-300" 
+                            <div
+                              className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
                               style={{ width: `${(order.acceptedItems + order.rejectedItems) / order.totalItems * 100}%` }}
                             ></div>
                           </div>
@@ -200,7 +207,7 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                           </div>
                         </div>
                       )}
-                      
+
                       {order.vehicleNumber && (
                         <div className="flex items-center gap-2">
                           <Hash className="h-4 w-4 text-muted-foreground" />
@@ -221,8 +228,8 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <div>
                           <p className="text-xs text-blue-600 font-medium">Estimated Arrival</p>
                           <p className="text-sm font-medium text-blue-800">
-                            {order.estimatedArrival.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} 
-                            {order.estimatedArrival.toDateString() !== new Date().toDateString() && 
+                            {order.estimatedArrival.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            {order.estimatedArrival.toDateString() !== new Date().toDateString() &&
                               ` on ${order.estimatedArrival.toLocaleDateString()}`
                             }
                           </p>
@@ -246,8 +253,8 @@ export function DeliveryOverview({ orders, onSelectOrder, onBackToHome }: Delive
                         <span>Pending: {order.totalItems - order.acceptedItems - order.rejectedItems}</span>
                       </div>
                     </div>
-                    
-                    <Button 
+
+                    <Button
                       onClick={() => onSelectOrder(order.id)}
                       className="bg-blue-600 hover:bg-blue-700"
                     >

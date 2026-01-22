@@ -3,6 +3,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import db from './config/db';
 import productRoutes from './routes/productRoutes';
+import categoryRoutes from './routes/categoryRoutes';
+import deliveryRoutes from './routes/deliveryRoutes';
+import assetRoutes from './routes/assetRoutes';
 
 dotenv.config();
 
@@ -26,6 +29,9 @@ db.getConnection()
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/deliveries', deliveryRoutes);
+app.use('/api/assets', assetRoutes);
 
 // Start server
 app.listen(PORT, () => {
